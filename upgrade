@@ -1,3 +1,8 @@
 Creating centos9 repo [https://ahelpme.com/linux/centos-stream-9/how-to-upgrade-to-centos-stream-9-from-centos-stream-8/]
 dnf install https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/centos-stream-release-9.0-22.el9.noarch.rpm https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/centos-gpg-keys-9.0-22.el9.noarch.rpm https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/centos-stream-repos-9.0-22.el9.noarch.rpm
+mv CentOS-Stream-* old/
+yum module reset container-tools python36
 dnf --releasever=9 --allowerasing --setopt=deltarpm=false distro-sync -y
+rpm --rebuilddb
+yum remove  iptables-ebtables
+dnf update -y
